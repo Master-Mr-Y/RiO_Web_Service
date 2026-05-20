@@ -1,8 +1,8 @@
-from google import genai as gen
+from google import genai 
 
-key = "AIzaSyBn6tCxD-X-GkvgtIoEFj-wDV5VFuJAcAM"
+key = "AIzaSyBUVYakgIP5sJe4vT2GU1ksiVrQ-cisRiY"
 
-Client = gen.Client(api_key=key)
+Client = genai.Client(api_key=key)
 
 chat_session = Client.chats.create(
     model = "gemini-2.5-flash",
@@ -21,4 +21,8 @@ def engine(qurry):
     response = chat_session.send_message(qurry)
     
     return response.text
+
+
+
+
 
