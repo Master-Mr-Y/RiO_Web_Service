@@ -12,14 +12,14 @@ def worrior(qurry):
 
 # Flask section
 
-web = Flask(__name__)
+app = Flask(__name__)
 
-@web.route("/")
+@app.route("/")
 
 def intro():
     
     return render_template("intro.html")
-@web.route("/index" , methods=["GET","POST"])
+@app.route("/index" , methods=["GET","POST"])
 def main():
     
     if request.method == "POST":
@@ -37,6 +37,6 @@ def main():
 
 if __name__ =="__main__":
     port = int(os.environ.get("PORT",5000))
-    web.run(host="0.0.0.0",port=port)
+    app.run(host="0.0.0.0",port=port)
     
     
