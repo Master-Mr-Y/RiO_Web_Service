@@ -1,0 +1,66 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: "bubble";
+    src: url("/static/fonts/bubblegum.ttf");
+}
+@font-face {
+    font-family: "hub";
+    src: url("/static/fonts/hubballi.ttf");
+}
+@font-face {
+    font-family: "galen";
+    src: url("/static/fonts/galdeano.ttf");
+}
+
+body{
+    background-color: #0f0e0e;
+}
+
+@media (max-width:600px) {
+    body{
+        background-color: #0f0e0e;
+    }
+    #navbar{
+        padding-left: 3px;
+    }
+    .logo{
+        width: 70px;
+        height: 50px;
+    }
+    #navbar a img{
+        width:  45px;
+        height: 45px;
+    }
+    #headdings{
+        text-align: center;
+        height: 40vh;
+    }
+    #footer{
+        position: relative;
+        bottom: 3vh;
+    }
+    #footer input{
+        width: 80%;
+        position: relative;
+        left: 3vw;
+    }
+    #send {
+        position: relative;
+        left: 5vw;
+        
+        z-index: 1;
+    }
+    .p1{
+        font-size: 12px;
+        position: relative;
+        
+    }
+    .para1{
+        position: relative;
+        top: 2vh;
+    }
+}
