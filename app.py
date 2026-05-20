@@ -1,6 +1,7 @@
 from flask import Flask , render_template , request , jsonify
 import time
 import genai
+import os
 # AI section
 
 def worrior(qurry):
@@ -34,6 +35,8 @@ def main():
     
     return render_template("index.html")
 
-web.run(debug=True)
+if __name__ =="__main__":
+    port = int(os.environ.get("PORT",5000))
+    web.run(host="0.0.0.0",port=port)
     
     
