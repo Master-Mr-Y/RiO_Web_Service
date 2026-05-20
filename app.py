@@ -1,12 +1,12 @@
 from flask import Flask , render_template , request , jsonify
 import time
-import genai
+import google_genai
 import os
 # AI section
 
 def worrior(qurry):
     
-    replay_msg = genai.engine(qurry)
+    replay_msg = google_genai.engine(qurry)
     
     return replay_msg
 
