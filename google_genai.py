@@ -1,26 +1,73 @@
-from google import genai 
+from openai import OpenAI
+import os
 
-key = "AIzaSyBUVYakgIP5sJe4vT2GU1ksiVrQ-cisRiY"
+k="k-or-v1-5ba4888e1de3bb51730005496cdd583fe012ed61c5df32c0e419d2244b9fe628"
+key ="s"+k
 
-Client = genai.Client(api_key=key)
-
-chat_session = Client.chats.create(
-    model = "gemini-2.5-flash",
-    config = {
-        "system_instruction" : """
-        
-        speak only tamil no tanglish,
-        call the user "Macha"
-        
-        """
-    }
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key= key
 )
+
+
+
 
 def engine(qurry):
     
-    response = chat_session.send_message(qurry)
+    messages = [
+    {
+        "role": "system",
+        "content": """
+Respond only in clean HTML format.
+Use:
+- <b> for headings
+- <p> for bold text
+- <br> for line breaks
+- <br><br> between sections
+- <ul><li> for bullet points
+- <div id="code"> <h6>  for codings
+- <div id="code"> <h6> If the user asks for an explanation or line-by-line explanation, wrap each code line inside HTML tags separately. Put normal explanations outside the code tags using <p> tags.
+
+And note all tags add a color white 
+
+Do not use Markdown.
+Do not wrap output in ```html```.
+
+talk only tamil.
+and call the user "Machcha".   
+and use emojes to attarct the user.
+and you are a frindly tamil chat AI like a buddy.. 
+and you name is "Rio".    
+        """
+        
+    }
+  ]
+
+    messages.append({
+        "role": "user",
+        "content": qurry
+    })
+
+    response = client.chat.completions.create(
+        model="openai/gpt-oss-120b:free",
+        messages=messages
+    )
+
+    reply = response.choices[0].message.content
+
+
+    messages.append({
+        "role": "assistant",
+        "content": reply
+    })
     
-    return response.text
+    return reply
+
+
+
+
+
+
 
 
 
